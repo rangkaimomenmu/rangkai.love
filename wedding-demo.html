@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amara &amp; Bagas — Contoh Undangan Pernikahan | Rangkai.love</title>
+<meta name="description" content="Contoh undangan pernikahan digital dari Rangkai.love — lihat bagaimana tampilannya untuk tamu.">
+<link rel="canonical" href="https://rangkai.love/wedding-demo.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --white:#FFFFFF; --ivory:#FAF7F1; --ink:#1B1917; --gray:#726C64;
+    --line:#E9DFCF; --terracotta:#B3572E; --terracotta-dark:#93451F; --terracotta-tint:#F4E4D8;
+    --serif:'DM Serif Display', serif; --sans:'Manrope', sans-serif;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:var(--sans); color:var(--ink); background:#EFEAE1;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%; display:block;}
+  a{color:inherit; text-decoration:none;}
+  button{font-family:inherit; cursor:pointer;}
+
+  .demo-bar{
+    position:sticky; top:0; z-index:200; background:var(--ink); color:var(--white);
+    font-size:13px; padding:10px 16px; display:flex; align-items:center; justify-content:center; gap:10px;
+    text-align:center;
+  }
+  .demo-bar a{color:var(--white); font-weight:700; text-decoration:underline; text-underline-offset:2px;}
+
+  .phone-frame{
+    max-width:460px; margin:0 auto; background:var(--white); min-height:100vh;
+    position:relative; box-shadow:0 0 60px rgba(0,0,0,0.08);
+  }
+
+  /* COVER */
+  .cover{
+    height:100vh; min-height:660px; display:flex; flex-direction:column; align-items:center; justify-content:center;
+    background:linear-gradient(160deg, #E9DFCF, var(--white));
+    text-align:center; padding:40px 32px; position:relative; cursor:pointer;
+    transition:opacity 0.6s ease, visibility 0.6s ease;
+  }
+  .cover.hidden{opacity:0; visibility:hidden; position:absolute; inset:0; pointer-events:none;}
+  .cover-eyebrow{font-size:13px; letter-spacing:0.12em; text-transform:uppercase; color:var(--terracotta-dark); font-weight:700; margin-bottom:20px;}
+  .cover h1{font-family:var(--serif); font-weight:400; font-size:clamp(34px,9vw,46px); line-height:1.25;}
+  .cover .amp{color:var(--terracotta); font-style:italic;}
+  .cover-sub{margin-top:18px; color:var(--gray); font-size:15px; max-width:280px;}
+  .cover-guest{margin-top:28px; font-size:13px; color:var(--gray);}
+  .cover-guest b{color:var(--ink);}
+  .cover-tap{
+    margin-top:32px; display:inline-flex; align-items:center; gap:10px;
+    border:1px solid var(--ink); padding:14px 28px; border-radius:2px; font-size:14px; font-weight:600;
+    animation:pulse 2.2s ease-in-out infinite;
+  }
+  @keyframes pulse{ 0%,100%{transform:scale(1);} 50%{transform:scale(1.04);} }
+
+  .content{display:none;}
+  .content.visible{display:block; animation:fadeIn 0.7s ease;}
+  @keyframes fadeIn{ from{opacity:0; transform:translateY(12px);} to{opacity:1; transform:translateY(0);} }
+
+  section{padding:56px 28px;}
+  .hero-photo{
+    height:340px; background:linear-gradient(150deg, #C98A5E 0%, #93451F 60%, #4A2412 100%);
+    display:flex; align-items:flex-end; padding:28px;
+  }
+  .hero-photo span{font-family:var(--serif); color:var(--white); font-size:24px; font-style:italic;}
+
+  .section-eyebrow{font-size:12.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--terracotta-dark); font-weight:700; margin-bottom:14px; display:block; text-align:center;}
+  h2{font-family:var(--serif); font-weight:400; font-size:26px; text-align:center; margin-bottom:14px;}
+  .center-text{text-align:center; color:var(--gray); font-size:15px; max-width:340px; margin:0 auto;}
+
+  /* QUOTE */
+  .quote-box{background:var(--ivory); padding:44px 28px; text-align:center;}
+  .quote-box p{font-family:var(--serif); font-style:italic; font-size:19px; line-height:1.6; color:var(--ink); max-width:320px; margin:0 auto;}
+  .quote-box .cite{margin-top:16px; font-family:var(--sans); font-style:normal; font-size:12.5px; color:var(--gray); letter-spacing:0.04em; text-transform:uppercase;}
+
+  /* COUPLE */
+  .couple-grid{display:flex; flex-direction:column; gap:32px; margin-top:32px;}
+  .couple-card{text-align:center;}
+  .couple-photo{width:120px; height:120px; border-radius:50%; margin:0 auto 16px; background:linear-gradient(150deg,#D8C9AE,#8B8072);}
+  .couple-card h3{font-family:var(--serif); font-size:22px; font-weight:400; margin-bottom:4px;}
+  .couple-card p{color:var(--gray); font-size:13.5px;}
+
+  /* LOVE STORY */
+  .story-item{display:flex; gap:18px; padding:18px 0; border-top:1px solid var(--line);}
+  .story-item:first-of-type{border-top:none;}
+  .story-year{font-family:var(--serif); color:var(--terracotta); font-size:18px; min-width:56px;}
+  .story-text h4{font-size:14.5px; font-weight:700; margin-bottom:4px;}
+  .story-text p{color:var(--gray); font-size:13.5px;}
+
+  /* COUNTDOWN */
+  .countdown{text-align:center;}
+  .countdown-grid{display:flex; justify-content:center; gap:14px; margin-top:24px;}
+  .countdown-unit{background:var(--ivory); border-radius:3px; padding:16px 14px; min-width:64px;}
+  .countdown-unit .num{font-family:var(--serif); font-size:28px; color:var(--terracotta-dark); display:block;}
+  .countdown-unit .label{font-size:11px; color:var(--gray); text-transform:uppercase; letter-spacing:0.05em; margin-top:4px; display:block;}
+
+  /* EVENT DETAILS */
+  .details{background:var(--ink); color:var(--white);}
+  .details h2{color:var(--white);}
+  .event-block{margin-top:8px; padding:20px 0; border-bottom:1px solid rgba(255,255,255,0.14);}
+  .event-block:last-of-type{border-bottom:none;}
+  .event-block .name{font-family:var(--serif); font-size:19px; text-align:center; margin-bottom:10px;}
+  .detail-row{display:flex; justify-content:space-between; gap:12px; font-size:14px; padding:6px 0;}
+  .detail-row .label{color:#C9A98D;}
+  .map-btn{
+    display:block; text-align:center; margin:24px auto 0; width:fit-content;
+    border:1px solid rgba(255,255,255,0.5); color:var(--white); padding:12px 26px; border-radius:2px; font-size:14px; font-weight:600;
+  }
+
+  /* DRESS CODE */
+  .dresscode{text-align:center;}
+  .swatch-row{display:flex; justify-content:center; gap:12px; margin-top:20px;}
+  .swatch-row span{width:38px; height:38px; border-radius:50%; display:inline-block; border:1px solid var(--line);}
+
+  /* GALLERY */
+  .gallery-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-top:24px;}
+  .gallery-grid div{aspect-ratio:1/1; border-radius:2px;}
+
+  /* GIFT */
+  .gift{background:var(--ivory); text-align:center;}
+  .gift-card{
+    background:var(--white); border:1px solid var(--line); border-radius:3px; padding:24px;
+    margin-top:24px; max-width:320px; margin-left:auto; margin-right:auto;
+  }
+  .gift-card .bank{font-weight:700; font-size:15px; margin-bottom:6px;}
+  .gift-card .acc{font-family:var(--serif); font-size:20px; letter-spacing:0.02em; margin-bottom:4px;}
+  .gift-card .name{color:var(--gray); font-size:13px;}
+  .gift-note{margin-top:20px; font-size:13px; color:var(--gray); max-width:300px; margin-left:auto; margin-right:auto;}
+
+  /* WISH CTA (replaces guestbook — no data stored) */
+  .wish{background:var(--terracotta-tint); text-align:center;}
+  .wish p{color:var(--ink); margin-bottom:22px; font-size:15px;}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px; padding:14px 28px; border-radius:2px;
+    font-weight:700; font-size:14.5px; background:var(--ink); color:var(--white);
+  }
+
+  .music-toggle{
+    position:fixed; bottom:24px; right:calc(50% - 230px + 20px); z-index:150;
+    width:48px; height:48px; border-radius:50%; background:var(--ink); color:var(--white);
+    display:flex; align-items:center; justify-content:center; border:none; font-size:18px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.25);
+  }
+  @media (max-width:500px){ .music-toggle{right:20px;} }
+
+  .demo-footer{background:var(--white); text-align:center; padding:48px 28px;}
+  .demo-footer img{height:22px; margin:0 auto 16px;}
+  .demo-footer p{color:var(--gray); font-size:13.5px; margin-bottom:20px;}
+</style>
+</head>
+<body>
+
+<div class="demo-bar">Ini contoh tampilan undangan &middot; <a href="index.html">Buat versimu di Rangkai.love</a></div>
+
+<div class="phone-frame">
+
+  <!-- COVER -->
+  <div class="cover" id="cover">
+    <span class="cover-eyebrow">Selamat Menempuh Hidup Baru</span>
+    <h1>Amara <span class="amp">&amp;</span><br>Bagas</h1>
+    <p class="cover-sub">Sabtu, 21 Maret 2027 — kami mengundang Anda untuk hadir di hari bahagia kami.</p>
+    <p class="cover-guest">Kepada Yth. <b>Bapak/Ibu/Saudara/i</b></p>
+    <div class="cover-tap">Buka Undangan</div>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="content" id="content">
+
+    <div class="hero-photo"><span>Amara &amp; Bagas</span></div>
+
+    <section class="quote-box">
+      <p>"Dan di antara tanda-tanda kekuasaan-Nya, diciptakan-Nya untukmu pasangan agar kamu merasa tenteram bersamanya."</p>
+      <div class="cite">QS. Ar-Rum: 21</div>
+    </section>
+
+    <section>
+      <span class="section-eyebrow">Mempelai</span>
+      <h2>Kedua Mempelai</h2>
+      <div class="couple-grid">
+        <div class="couple-card">
+          <div class="couple-photo"></div>
+          <h3>Amara Putri</h3>
+          <p>Putri dari Bapak Herman &amp; Ibu Sulastri</p>
+        </div>
+        <div class="couple-card">
+          <div class="couple-photo"></div>
+          <h3>Bagas Wirawan</h3>
+          <p>Putra dari Bapak Yusuf &amp; Ibu Ratna</p>
+        </div>
+      </div>
+    </section>
+
+    <section style="background:var(--ivory);">
+      <span class="section-eyebrow">Cerita Kami</span>
+      <h2>Perjalanan Menuju Hari Ini</h2>
+      <div>
+        <div class="story-item">
+          <span class="story-year">2019</span>
+          <div class="story-text"><h4>Pertama Bertemu</h4><p>Dipertemukan lewat teman kuliah yang sama, di sebuah acara kampus.</p></div>
+        </div>
+        <div class="story-item">
+          <span class="story-year">2022</span>
+          <div class="story-text"><h4>Mulai Menjalin Hubungan</h4><p>Setelah lama berteman, kami memutuskan untuk melangkah lebih serius.</p></div>
+        </div>
+        <div class="story-item">
+          <span class="story-year">2026</span>
+          <div class="story-text"><h4>Lamaran</h4><p>Bagas melamar Amara di tempat pertama kali mereka bertemu.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="countdown">
+      <span class="section-eyebrow">Hitung Mundur</span>
+      <h2>Menuju Hari Bahagia</h2>
+      <div class="countdown-grid" id="countdown">
+        <div class="countdown-unit"><span class="num" id="cd-days">00</span><span class="label">Hari</span></div>
+        <div class="countdown-unit"><span class="num" id="cd-hours">00</span><span class="label">Jam</span></div>
+        <div class="countdown-unit"><span class="num" id="cd-mins">00</span><span class="label">Menit</span></div>
+        <div class="countdown-unit"><span class="num" id="cd-secs">00</span><span class="label">Detik</span></div>
+      </div>
+    </section>
+
+    <section class="details">
+      <span class="section-eyebrow">Detail Acara</span>
+      <h2>Sampai Jumpa Di Sana</h2>
+      <div class="event-block">
+        <div class="name">Akad Nikah</div>
+        <div class="detail-row"><span class="label">Tanggal</span><span>Sabtu, 21 Maret 2027</span></div>
+        <div class="detail-row"><span class="label">Waktu</span><span>08.00 – 10.00 WIB</span></div>
+        <div class="detail-row"><span class="label">Lokasi</span><span>Masjid Al-Hikmah, Jakarta Selatan</span></div>
+      </div>
+      <div class="event-block">
+        <div class="name">Resepsi</div>
+        <div class="detail-row"><span class="label">Tanggal</span><span>Sabtu, 21 Maret 2027</span></div>
+        <div class="detail-row"><span class="label">Waktu</span><span>11.00 – 14.00 WIB</span></div>
+        <div class="detail-row"><span class="label">Lokasi</span><span>Grand Ballroom Hotel Aryaduta, Jakarta</span></div>
+      </div>
+      <a href="https://maps.google.com" class="map-btn">Buka Google Maps</a>
+    </section>
+
+    <section class="dresscode">
+      <span class="section-eyebrow">Dress Code</span>
+      <h2>Warna Hangat &amp; Earthy</h2>
+      <p class="center-text">Kami menyarankan warna-warna berikut agar foto bersama makin serasi.</p>
+      <div class="swatch-row">
+        <span style="background:#B3572E;"></span>
+        <span style="background:#D8C9AE;"></span>
+        <span style="background:#8B8072;"></span>
+        <span style="background:#1B1917;"></span>
+      </div>
+    </section>
+
+    <section>
+      <span class="section-eyebrow">Galeri</span>
+      <h2>Sedikit Cerita Kami</h2>
+      <div class="gallery-grid">
+        <div style="background:#D8C9AE;"></div>
+        <div style="background:#B3572E;"></div>
+        <div style="background:#8B8072;"></div>
+        <div style="background:#93451F;"></div>
+        <div style="background:#E9DFCF;"></div>
+        <div style="background:#4A453E;"></div>
+      </div>
+    </section>
+
+    <section class="gift">
+      <span class="section-eyebrow">Tanda Kasih</span>
+      <h2>Wedding Gift</h2>
+      <p class="center-text">Kehadiran Anda adalah hadiah terbesar bagi kami. Namun jika ingin memberi tanda kasih, tersedia melalui:</p>
+      <div class="gift-card">
+        <div class="bank">Bank BCA</div>
+        <div class="acc">1234567890</div>
+        <div class="name">a.n. Amara Putri</div>
+      </div>
+      <p class="gift-note">Amplop digital juga tersedia melalui tombol di bawah, khusus untuk yang ingin memberi secara online.</p>
+    </section>
+
+    <section class="wish">
+      <span class="section-eyebrow">Ucapan</span>
+      <h2>Kirim Doa &amp; Ucapanmu</h2>
+      <p>Karena undangan ini halaman statis, ucapanmu langsung terkirim ke WhatsApp kami — bukan disimpan di sistem.</p>
+      <a href="https://wa.me/6281234567890?text=Halo%20Amara%20%26%20Bagas%2C%20selamat%20menempuh%20hidup%20baru%21%20Semoga%20menjadi%20keluarga%20yang%20sakinah%2C%20mawaddah%2C%20warahmah." class="btn">Kirim Ucapan via WhatsApp</a>
+    </section>
+
+    <div class="demo-footer">
+      <img src="logo.png" alt="Rangkai.love">
+      <p>Undangan ini dibuat dengan Rangkai.love. Ini contoh tampilan — kamu bisa buat versimu sendiri.</p>
+      <a href="https://wa.me/628567876751?text=Halo%20Rangkai.love%2C%20saya%20ingin%20membuat%20undangan%20pernikahan%20seperti%20contoh%20ini." class="btn">Buat Undangan Seperti Ini</a>
+    </div>
+
+  </div>
+</div>
+
+<button class="music-toggle" id="musicToggle" aria-label="Aktifkan musik latar" aria-pressed="false">♪</button>
+
+<script>
+  const cover = document.getElementById('cover');
+  const content = document.getElementById('content');
+  cover.addEventListener('click', () => {
+    cover.classList.add('hidden');
+    content.classList.add('visible');
+  });
+
+  // Countdown to wedding date
+  const eventDate = new Date('2027-03-21T08:00:00+07:00').getTime();
+  function updateCountdown(){
+    const now = new Date().getTime();
+    let diff = eventDate - now;
+    if (diff < 0) diff = 0;
+    const days = Math.floor(diff / (1000*60*60*24));
+    const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+    const mins = Math.floor((diff % (1000*60*60)) / (1000*60));
+    const secs = Math.floor((diff % (1000*60)) / 1000);
+    document.getElementById('cd-days').textContent = String(days).padStart(2,'0');
+    document.getElementById('cd-hours').textContent = String(hours).padStart(2,'0');
+    document.getElementById('cd-mins').textContent = String(mins).padStart(2,'0');
+    document.getElementById('cd-secs').textContent = String(secs).padStart(2,'0');
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  // Music toggle (visual only in this demo — no audio file attached)
+  const musicBtn = document.getElementById('musicToggle');
+  let playing = false;
+  musicBtn.addEventListener('click', () => {
+    playing = !playing;
+    musicBtn.setAttribute('aria-pressed', String(playing));
+    musicBtn.style.background = playing ? '#B3572E' : '#1B1917';
+    musicBtn.textContent = playing ? '❚❚' : '♪';
+  });
+</script>
+
+</body>
+</html>
