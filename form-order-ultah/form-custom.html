@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Form Order - Website Kejutan Custom</title>
+<style>
+  *{ box-sizing:border-box; }
+  body{ font-family:'Segoe UI',sans-serif; background:#1c0e1a; color:#fdf1f6; max-width:600px; margin:0 auto; padding:24px 18px 60px; }
+  h1{ font-size:1.4rem; margin-bottom:4px; }
+  p.sub{ color:#d9a3c1; margin-top:0; margin-bottom:24px; font-size:.85rem; }
+  fieldset{ border:1px solid rgba(253,241,246,.2); border-radius:12px; padding:16px 18px; margin-bottom:16px; }
+  legend{ font-weight:600; color:#f5a3c2; padding:0 6px; font-size:.82rem; text-transform:uppercase; letter-spacing:.05em; }
+  label{ display:block; margin-top:10px; margin-bottom:4px; font-size:.85rem; }
+  input[type=text], input[type=date], input[type=number], textarea, select{
+    width:100%; padding:9px; border-radius:8px; border:1px solid rgba(253,241,246,.25);
+    background:#2b1526; color:#fdf1f6; font-size:.88rem;
+  }
+  textarea{ resize:vertical; min-height:56px; }
+  small{ color:#b08aa0; display:block; margin-top:2px; font-size:.75rem; }
+
+  .package-box{ border:1px solid #e8618f; background:rgba(232,97,143,.12); border-radius:12px; padding:16px; }
+  .package-box strong{ display:block; font-size:1.05rem; }
+  .package-box .price{ color:#f5a3c2; font-weight:700; font-size:1.3rem; margin:4px 0 10px; }
+  .package-box ul{ margin:0; padding-left:18px; font-size:.82rem; line-height:1.7; color:#f0dbe6; }
+
+  .addon{ padding:10px 0; border-bottom:1px dashed rgba(253,241,246,.15); font-size:.85rem; }
+  .addon:last-child{ border-bottom:none; }
+  .addon-top{ display:flex; align-items:center; justify-content:space-between; }
+  .addon label{ margin:0; display:flex; align-items:center; gap:8px; cursor:pointer; flex:1; }
+  .addon input[type=checkbox]{ width:auto; }
+  .addon span.price{ color:#f5a3c2; white-space:nowrap; font-weight:600; }
+  .addon small{ margin-left:24px; }
+  .addon .qty-row{ display:flex; align-items:center; gap:8px; margin-top:8px; margin-left:24px; }
+  .addon .qty-row input{ width:70px; }
+
+  .swatch-row{ display:flex; gap:8px; flex-wrap:wrap; margin-top:8px; }
+  .swatch{ width:34px; height:34px; border-radius:50%; cursor:pointer; border:2px solid transparent; }
+  .swatch.is-active{ border-color:#fff; transform:scale(1.1); }
+
+  .total-box{ position:sticky; bottom:10px; background:#2b1526; border:1px solid #e8618f; border-radius:12px; padding:12px 16px; margin-top:6px; display:flex; justify-content:space-between; align-items:center; font-size:.95rem; }
+  .total-box strong{ color:#f5a3c2; font-size:1.2rem; }
+
+  button{ width:100%; padding:14px; margin-top:14px; border:none; border-radius:999px; background:linear-gradient(160deg,#f5a3c2,#e8618f); color:#1c0e1a; font-weight:700; font-size:1rem; cursor:pointer; }
+  button:active{ transform:scale(.98); }
+</style>
+</head>
+<body>
+
+<h1>Form Order Website Kejutan</h1>
+<p class="sub">Isi cepat, total harga otomatis dihitung, langsung terkirim ke WhatsApp.</p>
+<p class="sub" style="margin-top:-14px;">Belum lihat contohnya? <a href="https://rangkai.love/u/cawpiaw-sayang" target="_blank" rel="noopener" style="color:#f5a3c2; font-weight:600;">Lihat demo di sini</a></p>
+
+<form id="orderForm">
+
+  <fieldset>
+    <legend>Paket</legend>
+    <div class="package-box">
+      <strong>Paket Lengkap</strong>
+      <div class="price">Rp49.000</div>
+      <ul>
+        <li>Semua fitur seperti demo (hero, amplop surat, tiup lilin, potong kue)</li>
+        <li>Galeri foto polaroid interaktif — sudah termasuk 10 foto</li>
+        <li>Musik latar, kotak balas WhatsApp, easter egg, dan seluruh animasi interaktif lain</li>
+        <li>Section makalah tersedia di halaman, isi makalah dari customer sendiri</li>
+        <li>Revisi gratis 2x</li>
+      </ul>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Tambahan (opsional)</legend>
+
+    <div class="addon">
+      <div class="addon-top">
+        <label><input type="checkbox" id="addonRevisi" data-price="20000"> Revisi Extra (3x)</label>
+        <span class="price">+Rp20.000</span>
+      </div>
+      <small>Paket sudah termasuk 2x revisi gratis. Ini tambahan 3x revisi di luar itu.</small>
+    </div>
+
+    <div class="addon">
+      <div class="addon-top">
+        <label><input type="checkbox" id="addonFoto" data-unit="2000"> Tambah Foto</label>
+        <span class="price" id="addonFotoPrice">+Rp0</span>
+      </div>
+      <small>Paket sudah termasuk 10 foto. Ini untuk foto tambahan di luar itu (@Rp2.000/foto).</small>
+      <div class="qty-row" id="fotoQtyRow" style="display:none;">
+        <label style="margin:0; display:block; width:auto;">Jumlah foto tambahan:</label>
+        <input type="number" id="fotoQty" min="1" value="1">
+      </div>
+    </div>
+
+    <div class="addon">
+      <div class="addon-top">
+        <label><input type="checkbox" id="addonMakalah" data-price="29000"> Buatkan Makalah</label>
+        <span class="price">+Rp29.000</span>
+      </div>
+      <small>Paket hanya menampilkan section makalah dengan isi dari customer. Centang ini kalau mau makalahnya sekalian dibuatkan.</small>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Data Dasar</legend>
+    <label>Nama kamu (pemesan)</label>
+    <input type="text" id="namaPengirim" required>
+
+    <label>Nama penerima kejutan</label>
+    <input type="text" id="namaPenerima" required>
+
+    <label>Panggilan sayang</label>
+    <input type="text" id="panggilan" placeholder="sayang / mylove / dll">
+
+    <label>Tanggal ulang tahun</label>
+    <input type="date" id="tanggalUlangTahun" required>
+
+    <label>Usia ke berapa</label>
+    <input type="number" id="usia" min="1">
+  </fieldset>
+
+  <fieldset>
+    <legend>Tone Warna</legend>
+    <div class="swatch-row" id="swatchRow">
+      <span class="swatch is-active" style="background:#e8618f" data-name="Pink romantis"></span>
+      <span class="swatch" style="background:#5a6ee8" data-name="Biru malam"></span>
+      <span class="swatch" style="background:#5cbf8f" data-name="Hijau pastel"></span>
+      <span class="swatch" style="background:#a06ee8" data-name="Ungu lavender"></span>
+      <span class="swatch" style="background:#e8a15a" data-name="Amber hangat"></span>
+    </div>
+    <input type="text" id="paletCustom" placeholder="Atau tulis warna custom di sini" style="margin-top:10px;">
+
+    <label>Gaya penulisan</label>
+    <select id="gaya">
+      <option value="Romantis serius">Romantis & serius</option>
+      <option value="Kocak/parody">Kocak / parody</option>
+      <option value="Campuran">Campuran romantis + receh</option>
+    </select>
+  </fieldset>
+
+  <fieldset>
+    <legend>Konten Singkat</legend>
+    <label>Kalimat pembuka</label>
+    <input type="text" id="kalimatPembuka" placeholder="Contoh: Ada kejutan buat kamu, sayang">
+
+    <label>Poin isi surat (nggak perlu lengkap, aku yang rangkai)</label>
+    <textarea id="isiSurat" placeholder="Contoh: sayang, bangga, pengen serius, dst"></textarea>
+
+    <label>Link YouTube lagu (opsional)</label>
+    <input type="text" id="linkMusik" placeholder="https://youtube.com/watch?v=...">
+  </fieldset>
+
+  <fieldset>
+    <legend>Kontak</legend>
+    <label>Nomor WhatsApp kamu</label>
+    <input type="text" id="noWa" required placeholder="08xxxxxxxxxx">
+    <label>Deadline dibutuhkan (jika ada)</label>
+    <input type="date" id="deadline">
+  </fieldset>
+
+  <div class="total-box">
+    <span>Estimasi total</span>
+    <strong id="totalPrice">Rp49.000</strong>
+  </div>
+
+  <button type="submit">Kirim Order ke WhatsApp</button>
+</form>
+
+<script>
+  var BASE_PRICE = 49000;
+  var addonRevisi = document.getElementById('addonRevisi');
+  var addonFoto = document.getElementById('addonFoto');
+  var addonMakalah = document.getElementById('addonMakalah');
+  var fotoQtyRow = document.getElementById('fotoQtyRow');
+  var fotoQty = document.getElementById('fotoQty');
+  var addonFotoPrice = document.getElementById('addonFotoPrice');
+  var swatches = document.querySelectorAll('.swatch');
+  var totalEl = document.getElementById('totalPrice');
+
+  function formatRupiah(n){
+    return 'Rp' + n.toLocaleString('id-ID');
+  }
+
+  function updateTotal(){
+    var total = BASE_PRICE;
+
+    if(addonRevisi.checked) total += 20000;
+
+    if(addonFoto.checked){
+      fotoQtyRow.style.display = 'flex';
+      var qty = Math.max(1, parseInt(fotoQty.value, 10) || 1);
+      var fotoCost = qty * 2000;
+      addonFotoPrice.textContent = '+' + formatRupiah(fotoCost);
+      total += fotoCost;
+    } else {
+      fotoQtyRow.style.display = 'none';
+      addonFotoPrice.textContent = '+Rp0';
+    }
+
+    if(addonMakalah.checked) total += 29000;
+
+    totalEl.textContent = formatRupiah(total);
+  }
+
+  addonRevisi.addEventListener('change', updateTotal);
+  addonFoto.addEventListener('change', updateTotal);
+  addonMakalah.addEventListener('change', updateTotal);
+  fotoQty.addEventListener('input', updateTotal);
+  updateTotal();
+
+  swatches.forEach(function(s){
+    s.addEventListener('click', function(){
+      swatches.forEach(function(x){ x.classList.remove('is-active'); });
+      s.classList.add('is-active');
+      document.getElementById('paletCustom').value = '';
+    });
+  });
+
+  document.getElementById('orderForm').addEventListener('submit', function(e){
+    e.preventDefault();
+
+    var addonList = [];
+    if(addonRevisi.checked) addonList.push('Revisi Extra 3x (+Rp20.000)');
+    if(addonFoto.checked){
+      var qty = Math.max(1, parseInt(fotoQty.value, 10) || 1);
+      addonList.push('Tambah Foto ' + qty + 'x (+' + formatRupiah(qty*2000) + ')');
+    }
+    if(addonMakalah.checked) addonList.push('Buatkan Makalah (+Rp29.000)');
+
+    var paletCustomVal = document.getElementById('paletCustom').value.trim();
+    var activeSwatch = document.querySelector('.swatch.is-active');
+    var paletVal = paletCustomVal || (activeSwatch ? activeSwatch.dataset.name : '');
+
+    var msg = "*ORDER WEBSITE KEJUTAN*\n\n"
+      + "Paket: Paket Lengkap (Rp49.000)\n"
+      + "Tambahan: " + (addonList.length ? addonList.join(', ') : '-') + "\n"
+      + "Estimasi total: " + totalEl.textContent + "\n\n"
+      + "Nama pemesan: " + document.getElementById('namaPengirim').value + "\n"
+      + "Nama penerima: " + document.getElementById('namaPenerima').value + "\n"
+      + "Panggilan: " + document.getElementById('panggilan').value + "\n"
+      + "Tanggal ultah: " + document.getElementById('tanggalUlangTahun').value + "\n"
+      + "Usia ke: " + document.getElementById('usia').value + "\n\n"
+      + "Tone warna: " + paletVal + "\n"
+      + "Gaya penulisan: " + document.getElementById('gaya').value + "\n\n"
+      + "Kalimat pembuka: " + document.getElementById('kalimatPembuka').value + "\n\n"
+      + "Poin isi surat:\n" + document.getElementById('isiSurat').value + "\n\n"
+      + "Link musik: " + document.getElementById('linkMusik').value + "\n\n"
+      + "No WA pemesan: " + document.getElementById('noWa').value + "\n"
+      + "Deadline: " + document.getElementById('deadline').value;
+
+    var adminNumber = "6289515192171";
+    var url = "https://wa.me/" + adminNumber + "?text=" + encodeURIComponent(msg);
+    window.open(url, "_blank");
+  });
+</script>
+
+</body>
+</html>
